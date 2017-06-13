@@ -52,6 +52,8 @@ defmodule Calcutta.Web do
       import Calcutta.Router.Helpers
       import Calcutta.ErrorHelpers
       import Calcutta.Gettext
+      import Calcutta.ViewHelper
+
     end
   end
 
