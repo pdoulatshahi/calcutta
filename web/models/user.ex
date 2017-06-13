@@ -15,6 +15,7 @@ defmodule Calcutta.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, ~w(email), [])
+    |> unique_constraint(:email)
     |> validate_format(:email, ~r/@/)
   end
 
@@ -22,6 +23,7 @@ defmodule Calcutta.User do
     model
     |> changeset(params)
     |> cast(params, ~w(password), [])
+    |> unique_constraint(:email)
     |> validate_length(:password, min: 6)
     |> put_password_hash()
   end
@@ -35,5 +37,5 @@ defmodule Calcutta.User do
         changeset
     end
   end
-  
+
 end

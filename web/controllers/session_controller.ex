@@ -11,7 +11,7 @@ defmodule Calcutta.SessionController do
       {:ok, conn} ->
         logged_in_user = Guardian.Plug.current_resource(conn)
         conn
-        |> put_flash(:info, "Innlogget")
+        |> put_flash(:info, "Logged In Successfully")
         |> redirect(to: user_path(conn, :show, logged_in_user))
       {:error, _reason, conn} ->
         conn

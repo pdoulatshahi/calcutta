@@ -21,7 +21,7 @@ defmodule Calcutta.UserController do
         |> redirect(to: page_path(conn, :index))
     end
   end
-  
+
   def update(conn, %{"id" => id, "user" => user_params}) do
     user = Repo.get(User, id)
     changeset = User.registration_changeset(user, user_params)
@@ -55,7 +55,7 @@ defmodule Calcutta.UserController do
         conn
         |> Calcutta.Auth.login(user)
         |> put_flash(:info, "User created!")
-        |> redirect(to: user_path(conn, :index))
+        |> redirect(to: user_path(conn, :show))
       {:error, changeset} ->
         conn
         |> render("new.html", changeset: changeset)
