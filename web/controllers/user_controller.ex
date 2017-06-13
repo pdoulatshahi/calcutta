@@ -55,7 +55,7 @@ defmodule Calcutta.UserController do
         conn
         |> Calcutta.Auth.login(user)
         |> put_flash(:info, "User created!")
-        |> redirect(to: user_path(conn, :show))
+        |> redirect(to: user_path(conn, :show, user))
       {:error, changeset} ->
         conn
         |> render("new.html", changeset: changeset)

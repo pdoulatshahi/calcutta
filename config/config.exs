@@ -28,7 +28,7 @@ config :guardian, Guardian,
   issuer: "Calcutta",
   ttl: { 30, :days},
   verify_issuer: true,
-  secret_key: "nkihaask7Yv0fDQ7KBlcjWAHWnTgYZrHWtcGcyebm/VVUHtUth2azp/E+/oMmQRw",
+  secret_key: System.get_env("GUARDIAN_SECRET_KEY"),
   serializer: Calcutta.GuardianSerializer
 
 # Import environment specific config. This must remain at the bottom
