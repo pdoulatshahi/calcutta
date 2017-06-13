@@ -9,16 +9,3 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
-
-alias Calcutta.Repo
-alias Calcutta.User
-
-Repo.insert! %User{
-  email: "paul.doulatshahi@gmail.com",
-  password: "password"
-}
-
-Repo.insert! %User{
-  email: "keith.porcaro@gmail.com",
-  password: "password"
-}
