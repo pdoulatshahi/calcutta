@@ -5,6 +5,7 @@ defmodule Calcutta.User do
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    many_to_many :leagues, Calcutta.League, join_through: "league_users"
     timestamps()
   end
 

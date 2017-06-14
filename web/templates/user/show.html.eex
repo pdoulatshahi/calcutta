@@ -1,20 +1,21 @@
 <h1 class="f3 f2-m f1-l fw2 black-90 mv3 tc">User Profile</h1>
 
-<div class="pa4 black-80">
-  <%= form_for @changeset, user_path(@conn, :update, @user),[class: "measure center"], fn f -> %>
-    <fieldset id="edit_" class="ba b--transparent ph0 mh0">
-      <legend class="ph0 mh0 fw6 clip">Sign Up</legend>
-      <div class="mt3">
-        <label class="db fw4 lh-copy f6" for="email-address">Email address</label>
-        <%= text_input f, :email, placeholder: "Email", class: "pa2 input-reset ba bg-transparent w-100 measure" %>
-      </div>
-      <div class="mt3">
-        <label class="db fw4 lh-copy f6" for="password">Password</label>
-        <%= password_input f, :password, placeholder: "Password", class: "b pa2 input-reset ba bg-transparent" %>
-      </div>
-    </fieldset>
-    <div class="mt3">
-      <%= submit "Edit Info", class: "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" %>
-    </div>
-  <% end %>
+<div class="pa4">
+  <div class="overflow-auto">
+    <table class="f6 w-100 mw6 center" cellspacing="0">
+      <tbody class="lh-copy">
+        <tr class="stripe-dark">
+          <td class="fw6 pa3">Email</td>
+          <td class="pa3"><%= @user.email %></td>
+        </tr>
+        <tr class="stripe-dark">
+          <td class="fw6 pa3">Joined</td>
+          <td class="pa3"><%= elem(Timex.format(@user.inserted_at, "{Mfull} {D}, {YYYY}"),1) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tc mt2">
+    <%= link "Edit Profile", to: user_path(@conn, :edit, current_user(@conn)), class: "b ph3 pv2 input-reset ba b--black black bg-transparent grow pointer f6 no-underline"%>
+  </div>
 </div>

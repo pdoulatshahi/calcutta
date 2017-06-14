@@ -30,7 +30,8 @@ defmodule Calcutta.Router do
 
   scope "/", Calcutta do
     pipe_through [:browser, :browser_auth]
-    resources "/users", UserController, only: [:show, :update]
+    resources "/users", UserController, only: [:show, :edit, :update]
+    resources "/leagues", LeagueController, only: [:new, :create]
   end
 
   # Other scopes may use custom stacks.
