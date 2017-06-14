@@ -11,11 +11,12 @@ defmodule Calcutta.UserController do
 
   def show(conn, %{"id" => id}) do
     user = Repo.get(User, id)
+    leagues = Repo.all(assoc(user, :leagues))
     changeset = User.changeset(user)
     cond do
       user == Guardian.Plug.current_resource(conn) ->
         conn
-        |> render("show.html", user: user, changeset: changeset)
+        |> render("show.html", user: user, leagues: leagues, changeset: changeset)
       :error ->
         conn
         |> put_flash(:info, "No access")

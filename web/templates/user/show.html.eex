@@ -19,3 +19,24 @@
     <%= link "Edit Profile", to: user_path(@conn, :edit, current_user(@conn)), class: "b ph3 pv2 input-reset ba b--black black bg-transparent grow pointer f6 no-underline"%>
   </div>
 </div>
+
+<div class="pa4">
+  <div class="overflow-auto">
+    <table class="f6 w-100 mw6 center" cellspacing="0">
+      <thead>
+        <tr class="stripe-dark">
+          <th class="fw6 tl pa3 bg-white">League Name</th>
+          <th class="fw6 tl pa3 bg-white">Created</th>
+        </tr>
+      </thead>
+      <tbody class="lh-copy">
+        <%= for league <- @leagues do %>
+          <tr class="stripe-dark">
+            <td class="pa3"><%= league.name %></td>
+            <td class="pa3"><%= elem(Timex.format(league.inserted_at, "{Mfull} {D}, {YYYY}"),1) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

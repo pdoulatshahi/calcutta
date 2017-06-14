@@ -1,0 +1,16 @@
+<h1 class="f3 f2-m f1-l fw2 black-90 mv3 tc">Create League</h1>
+
+<div class="pa4 black-80">
+  <%= form_for @changeset, league_path(@conn, :create), [class: "measure center"], fn f -> %>
+    <fieldset id="create_league" class="ba b--transparent ph0 mh0">
+      <legend class="ph0 mh0 fw6 clip">Create League</legend>
+      <div class="mt3">
+        <label class="db fw4 lh-copy f6" for="name">League Name</label>
+        <%= text_input f, :name, placeholder: "Name", class: "pa2 input-reset ba bg-transparent w-100 measure" %>
+      </div>
+    </fieldset>
+    <div class="mt3">
+      <%= submit "Create League", class: "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" %>
+    </div>
+  <% end %>
+</div>
